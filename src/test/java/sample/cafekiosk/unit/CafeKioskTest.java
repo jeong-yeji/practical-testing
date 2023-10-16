@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.LocalDateTime;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
 import sample.cafekiosk.unit.beverage.Latte;
@@ -20,6 +21,7 @@ class CafeKioskTest {
         System.out.println(">>> 담긴 음료 : " + cafeKiosk.getBeverages().get(0).getName());
     }
 
+    @DisplayName("음료를 1개 추가하면 주문 목록에 담긴다.")
     @Test
     void add() {
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -30,7 +32,7 @@ class CafeKioskTest {
     }
 
     @Test
-    void addSeveralBeverages() {
+    void 여러_음료_추가_테스트() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         cafeKiosk.add(americano, 2);
@@ -114,6 +116,7 @@ class CafeKioskTest {
         assertThat(order.getBeverages().get(0).getName()).isEqualTo("Americano");
     }
 
+    @DisplayName("영업 시작 시간 이전에는 주문을 생성할 수 없다.")
     @Test
     void createOrderOutsideOpenTime() {
         CafeKiosk cafeKiosk = new CafeKiosk();
